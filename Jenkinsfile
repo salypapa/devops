@@ -1,23 +1,39 @@
 pipeline {
-    agent any
-    triggers {
-        cron('*/10 * * * *')
-    }
-    stages {
+  agent any
+  stages {
+    stage('Build') {
+      parallel {
         stage('Build') {
-            steps {
-                echo 'Building.'
+          steps {
+            echo 'Building.'
           }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing.'
+
+        stage('build2') {
+          steps {
+            sh '''#!/usr/bin/env bash
+
+sudo apt update -y '''
           }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying.'
-          }
-        }
+
       }
-   }
+    }
+
+    stage('Test') {
+      steps {
+        echo 'Testing.'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        echo 'Deploying.'
+      }
+    }
+
+  }
+  triggers {
+    cron('*/10 * * * *')
+  }
+}
