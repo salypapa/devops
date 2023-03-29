@@ -11,7 +11,7 @@ pipeline {
 
         stage('build2') {
           steps {
-            sh 'apt update -y '
+            sh 'echo "build2"'
           }
         }
 
