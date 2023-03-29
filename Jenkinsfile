@@ -11,9 +11,7 @@ pipeline {
 
         stage('build2') {
           steps {
-            sh '''#!/usr/bin/env bash
-
-sudo apt update -y '''
+            sh 'apt update -y '
           }
         }
 
