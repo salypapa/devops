@@ -31,7 +31,5 @@ pipeline {
     }
 
   }
- # triggers {
-    #cron('*/10 * * * *')
-  }
+
 }
